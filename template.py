@@ -1,4 +1,8 @@
-import string
+def setup():
+    text_file = open("input.txt", "r")
+    lines = text_file.read().splitlines()
+    text_file.close()
+
 
 def part1():
 
@@ -9,6 +13,7 @@ def part2():
     return
 
 def main():
+    setup()
     part1()
     part2()
 
