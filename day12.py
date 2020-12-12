@@ -19,10 +19,8 @@ def part1():
         if direction == 'S': northsouth -= amount
         if direction == 'E': eastwest += amount
         if direction == 'W': eastwest -= amount
-        if direction == 'R': facing += amount
-        if direction == 'L': facing -= amount
-        if facing >= 360: facing -= 360
-        if facing < 0: facing += 360
+        if direction == 'R': facing = (facing + amount) % 360
+        if direction == 'L': facing = (facing - amount) % 360
         if direction == 'F':
             if facing==0: northsouth += amount
             if facing==90: eastwest += amount
