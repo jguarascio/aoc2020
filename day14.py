@@ -12,12 +12,12 @@ def part1():
     for i in code:
         op = i.split(' = ')[0]
         value = i.split(' = ')[1]
-        print(f'{op=} {value=}')
+        #print(f'{op=} {value=}')
         if op == 'mask':
             mask = value
             and_mask = int(value.replace('1','0').replace('X','1'),2)
             or_mask = int(value.replace('X','0'),2)
-            print(f'{and_mask=} {or_mask=}')
+            #print(f'{and_mask=} {or_mask=}')
         else:
             addr = int(op[4:-1])
             mem[addr] = (int(value) & and_mask) | or_mask
@@ -35,7 +35,6 @@ def part2():
         if op == 'mask':
             mask = value
             and_mask = int(value.replace('0','1').replace('X','0'),2)
-            or_mask = int(value.replace('X','0'),2)
             floats = [i for i in range(len(value)) if value[i]=='X']
             all_masks = []
             for x in range(pow(2,int(len(floats)))):
@@ -48,7 +47,7 @@ def part2():
             addr = int(op[4:-1])
 
             for sub_mask in all_masks:
-                mem[(addr & and_mask) | or_mask | int(sub_mask,2)] = int(value)
+                mem[(addr & and_mask) | int(sub_mask,2)] = int(value)
             
     print(sum(mem.values()))
 
