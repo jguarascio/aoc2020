@@ -47,16 +47,16 @@ def part2():
 
     # Set up a dynamic programming solution
     path_count = {}
-    for key in sorted(graph):
-        path_count[key] = 0
-
     path_count[0] = 1
+    for key in sorted(lines):
+        path_count[key] = 0
+    
     for i in path_count:
         for j in range(1, 3+1):
             if i - j in path_count:
                 path_count[i] += path_count[i-j]
 
-    print(path_count)
+    print(path_count[max(path_count.keys())])
 
     return
 
